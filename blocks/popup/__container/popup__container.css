@@ -1,0 +1,12 @@
+.popup__container {
+  width: 430px;
+  height: 330px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 25px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
