@@ -6,3 +6,10 @@
   padding-bottom: 60px;
   background-color: #000;
 }
+
+@media (max-width: 767px) {
+  .content {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}

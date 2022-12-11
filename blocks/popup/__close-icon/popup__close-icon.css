@@ -5,3 +5,7 @@
   top: -40px;
   right: -40px;
 }
+
+.popup__close-icon:hover {
+  opacity: 0.6;
+}

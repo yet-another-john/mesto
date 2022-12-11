@@ -1,11 +1,30 @@
 .footer {
-  margin: 67px 0 0 200px;
-  width: 318px;
-  height: 18px;
+  margin: 67px auto 0;
+  max-width: 880px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   color: #545454;
+}
+
+@media (max-width: 1023px) {
+  .footer {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin: 48px auto 0;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer {
+    width: 282px;
+  }
 }

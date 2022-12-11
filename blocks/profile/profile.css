@@ -4,3 +4,16 @@
   min-height: 120px;
   display: flex;
 }
+
+@media (max-width: 767px) {
+  .profile {
+    margin: 42px auto 0;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile {
+    max-width: 320px;
+  }
+}

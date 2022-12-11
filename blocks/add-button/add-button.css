@@ -7,3 +7,21 @@
   border: 2px solid #FFFFFF;
   border-radius: 2px;
 }
+
+
+.add-button:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 1023px) {
+  .add-button {
+  margin-right: 27px;
+  }
+}
+
+@media (max-width: 767px) {
+  .add-button {
+    margin: 31px 0 0;
+    width: 282px;
+  }
+}

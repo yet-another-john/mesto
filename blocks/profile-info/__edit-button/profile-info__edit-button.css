@@ -4,3 +4,15 @@
   height: 22px;
   border: 1px solid #FFFFFF;
 }
+
+.profile-info__edit-button:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .profile-info__edit-button {
+    margin: 11px 0 0 10px;
+    width: 18px;
+    height: 18px;
+  }
+}

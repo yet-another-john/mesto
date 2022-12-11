@@ -6,3 +6,10 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (max-width: 767px) {
+  .header {
+    max-width: 320px;
+    min-height: 56px;
+  }
+}
