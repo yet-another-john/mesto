@@ -5,3 +5,12 @@
   top: 111px;
   left: 36px;
 }
+
+@media (max-width: 767px) {
+  .popup__name-field {
+    width: 238px;
+    height: 27px;
+    top: 122px;
+    left: 22px;
+  }
+}

@@ -16,6 +16,7 @@
 @media (max-width: 767px) {
   .elements {
     margin: 36px auto 0;
+    max-width: 320px;
     grid-template-columns: 1fr;
     justify-items: center;
   }
