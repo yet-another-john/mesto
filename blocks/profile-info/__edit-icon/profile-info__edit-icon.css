@@ -1,13 +1,13 @@
 .profile-info__edit-icon {
-  margin: 6px 6px;
+  margin: 5px 0px;
   width: 10px;
   height: 10px;
 }
 
 @media (max-width: 767px) {
   .profile-info__edit-icon {
-    margin: 5.25px 5.25px;
-    width: 7.5px;
-    height: 7.5px;
+    margin: 3px 0;
+    width: 7px;
+    height: 7px;
   }
 }

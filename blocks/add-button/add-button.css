@@ -1,4 +1,5 @@
 .add-button {
+  padding: 0;
   width: 150px;
   height: 50px;
   margin-left: auto;
@@ -6,6 +7,8 @@
   box-sizing: border-box;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 
@@ -21,7 +24,7 @@
 
 @media (max-width: 767px) {
   .add-button {
-    margin: 31px 0 0;
+    margin: 32px 0 0;
     width: 282px;
   }
 }

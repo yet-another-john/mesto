@@ -1,8 +1,12 @@
 .element__like {
+  padding: 0;
   width: 22px;
   height: 19px;
   margin: 5px 5px 0 0;
   background-image: url(../../../images/heart.svg);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }
 
 .element__like:hover {

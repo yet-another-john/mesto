@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script src="./scripts/index.js"></script>
   <title>Место</title>
 </head>
 
@@ -21,15 +22,15 @@
           <div class="profile-info">
             <div class="profile-info__name-button">
               <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-              <div class="profile-info__edit-button">
+              <button class="profile-info__edit-button">
                 <img class="profile-info__edit-icon" src="./images/pencil.svg" alt="Иконка.">
-              </div>
+              </button>
             </div>
             <p class="profile-info__status">Исследователь океана</p>
           </div>
-          <div class="add-button">
+          <button class="add-button">
             <img class="add-button__plus" src="./images/plus.svg" alt="Иконка.">
-          </div>
+          </button>
         </section>
         <section class="elements">
           <div class="element">
@@ -38,7 +39,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Карачаевск</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
@@ -47,7 +48,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Гора Эльбрус</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
@@ -56,7 +57,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Домбай</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
@@ -65,7 +66,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Гора Эльбрус</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
@@ -74,7 +75,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Домбай</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
           <div class="element">
@@ -83,7 +84,7 @@
             </div>
             <div class="element__sign-like">
               <p class="element__sign">Карачаево-Черкессия</p>
-              <div class="element__like"></div>
+              <button class="element__like"></button>
             </div>
           </div>
         </section>
@@ -92,21 +93,17 @@
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
       </footer>
       <div class="popup">
-        <div class="popup__container">
+        <form class="popup__container">
           <p class="popup__header">Редактировать профиль</p>
-          <div class="popup__name-field">
-            <p class="popup__field-text">Жак-Ив Кусто</p>
-            <hr class="popup__field-line">
-          </div>
-          <div class="popup__status-field">
-            <p class="popup__field-text">Исследователь океана</p>
-            <hr class="popup__field-line">
-          </div>
-          <div class="popup__submit-button">
+          <input class="popup__input-name" type="text"></input>
+          <input class="popup__input-status" type="text"></input>
+          <button class="popup__submit-button">
             <p class="popup__submit-button-text">Сохранить</p>
-          </div>
-          <img class="popup__close-icon" src="./images/close-icon.svg" alt="Иконка.">
-        </div>
+          </button>
+          <button class="popup__close-button">
+            <img class="popup__close-icon" src="./images/close-icon.svg" alt="Иконка.">
+          </button>
+        </form>
       </div>
     </div>
   </div>
