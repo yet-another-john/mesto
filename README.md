@@ -7,4 +7,4 @@
 Структура БЭМ (Nested), HTML, CSS, JavaScript.
 ==========
 
-Ознакомиться с проектом можно по ссылке
+Ознакомиться с проектом можно по ссылке https://stoliarovea.github.io/mesto/index.html
