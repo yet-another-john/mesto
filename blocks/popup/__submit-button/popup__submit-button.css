@@ -10,6 +10,13 @@
   border-radius: 2px;
   border: none;
   cursor: pointer;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #fff;
 }
 
 .popup__submit-button:hover {
@@ -22,5 +29,7 @@
     height: 46px;
     top: 251px;
     left: 22px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
