@@ -1,22 +1,23 @@
-.profile-info__name {
+.profile__name {
   margin: 0;
   padding: 0;
   max-width: 350px;
   white-space: nowrap;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 43px;
   line-height: 48px;
   color: #fff;
-  height: 39px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
-  .profile-info__name {
+  .profile__name {
     margin: 5px 0 0 45px;
     width: 189px;
-    height: 26px;
     font-size: 27px;
     line-height: 33px;
     text-align: center;

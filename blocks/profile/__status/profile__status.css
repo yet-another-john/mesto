@@ -1,19 +1,22 @@
-.profile-info__status {
-  margin: 16px 0 0;
+.profile__status {
+  margin: 8px 0 0;
   padding: 0;
   max-width: 350px;
   white-space: nowrap;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   color: #FFFFFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
-  .profile-info__status {
-    margin: 14px 0 0;
+  .profile__status {
+    margin: 7px 0 0;
     font-size: 14px;
     line-height: 17px;
     text-align: center;

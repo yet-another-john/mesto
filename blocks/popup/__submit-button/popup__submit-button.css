@@ -1,16 +1,13 @@
 .popup__submit-button {
-  margin: 0;
+  margin: 48px 0 37px 36px;
   padding: 0;
-  position: absolute;
   width: 358px;
   height: 50px;
-  top: 243px;
-  left: 36px;
   background: #000000;
   border-radius: 2px;
   border: none;
   cursor: pointer;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -25,10 +22,9 @@
 
 @media (max-width: 767px) {
   .popup__submit-button {
+    margin: 45px 0 25px 22px;
     width: 238px;
     height: 46px;
-    top: 251px;
-    left: 22px;
     font-size: 14px;
     line-height: 17px;
   }

@@ -1,11 +1,11 @@
-.profile-info__edit-icon {
+.profile__edit-icon {
   margin: 5px 0px;
   width: 10px;
   height: 10px;
 }
 
 @media (max-width: 767px) {
-  .profile-info__edit-icon {
+  .profile__edit-icon {
     margin: 3px 0;
     width: 7px;
     height: 7px;

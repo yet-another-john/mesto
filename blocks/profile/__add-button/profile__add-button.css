@@ -1,4 +1,4 @@
-.add-button {
+.profile__add-button {
   padding: 0;
   width: 150px;
   height: 50px;
@@ -12,18 +12,18 @@
 }
 
 
-.add-button:hover {
+.profile__add-button:hover {
   opacity: 0.6;
 }
 
 @media (max-width: 1023px) {
-  .add-button {
+  .profile__add-button {
     margin-right: 27px;
   }
 }
 
 @media (max-width: 767px) {
-  .add-button {
+  .profile__add-button {
     margin: 32px 0 0;
     width: 282px;
   }

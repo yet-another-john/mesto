@@ -1,5 +1,5 @@
-.profile-info__edit-button {
-  margin: 15px 0 0 17px;
+.profile__edit-button {
+  margin: 15px 0 0 12px;
   padding: 0;
   width: 24px;
   height: 24px;
@@ -8,12 +8,12 @@
   cursor: pointer;
 }
 
-.profile-info__edit-button:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
 }
 
 @media (max-width: 767px) {
-  .profile-info__edit-button {
+  .profile__edit-button {
     margin: 12px 0 0 11px;
     width: 18px;
     height: 18px;

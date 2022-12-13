@@ -13,77 +13,64 @@
     <div class="content">
       <header class="header">
         <img class="logo" src="./images/logo.svg" alt="Логотип.">
-        <hr class="header__line">
       </header>
       <main class="main">
         <section class="profile">
-          <img class="avatar" src="./images/avatar.svg" alt="Аватар.">
-          <div class="profile-info">
-            <div class="profile-info__name-button">
-              <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-              <button class="profile-info__edit-button">
-                <img class="profile-info__edit-icon" src="./images/pencil.svg" alt="Иконка.">
+          <img class="profile__avatar" src="./images/avatar.svg" alt="Аватар.">
+          <div class="profile__info">
+            <div class="profile__name-button">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button">
+                <img class="profile__edit-icon" src="./images/pencil.svg" alt="Иконка.">
               </button>
             </div>
-            <p class="profile-info__status">Исследователь океана</p>
+            <p class="profile__status">Исследователь океана</p>
           </div>
-          <button class="add-button">
-            <img class="add-button__plus" src="./images/plus.svg" alt="Иконка.">
+          <button class="profile__add-button" type="button">
+            <img class="profile__add-button-plus" src="./images/plus.svg" alt="Иконка.">
           </button>
         </section>
         <section class="elements">
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/karachaevsk.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/karachaevsk.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Карачаевск</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Карачаевск</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/elbrus.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/elbrus.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Гора Эльбрус</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Гора Эльбрус</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/dombai.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/dombai.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Домбай</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Домбай</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/elbrus.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/elbrus.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Гора Эльбрус</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Гора Эльбрус</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/dombai.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/dombai.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Домбай</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Домбай</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
           <div class="element">
-            <div class="element__mask">
-              <img class="element__image" src="./images/karachaevsk.jpg" alt="Картинка.">
-            </div>
+            <img class="element__image element__mask" src="./images/karachaevsk.jpg" alt="Картинка.">
             <div class="element__sign-like">
-              <p class="element__sign">Карачаево-Черкессия</p>
-              <button class="element__like"></button>
+              <h2 class="element__sign">Карачаево-Черкессия</h2>
+              <button class="element__like" type="button"></button>
             </div>
           </div>
         </section>
@@ -92,15 +79,17 @@
         <p class="footer__text">&copy; 2022 Mesto Russia</p>
       </footer>
       <div class="popup">
-        <form class="popup__container">
-          <p class="popup__header">Редактировать профиль</p>
-          <input class="popup__input-name" type="text">
-          <input class="popup__input-status" type="text">
-          <button class="popup__submit-button">Сохранить</button>
-          <button class="popup__close-button">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button">
             <img class="popup__close-icon" src="./images/close-icon.svg" alt="Иконка.">
           </button>
-        </form>
+          <form name="popup-form">
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <input class="popup__input" type="text" name="input-name">
+            <input class="popup__input" type="text" name="input-status">
+            <button class="popup__submit-button" type="submit">Сохранить</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
