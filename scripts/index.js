@@ -77,12 +77,31 @@ function addNewCard() {
   elements.prepend(cardElement);
 };
 
+function likeCard(event) {
+  let target = event.target.closest('.element__like');
+  if (target.classList.contains('element__like_active')) {
+    target.classList.remove('element__like_active');
+  }
+  else {
+    target.classList.add('element__like_active');
+  }
+};
+
+function deleteCard(event) {
+  let target = event.target.closest('.element__delete');
+  target.closest('.element').remove();
+};
+
 loadInitialCards();
 
 profileEditButton.addEventListener('click', () => { openPopup(popupProfile); getProfileData(); });
-popupProfileCloseButton.addEventListener('click', () => { closePopup(popupProfile) });
-popupProfileForm.addEventListener('submit', function (evt) { evt.preventDefault(); insertProfileData(); closePopup(popupProfile) });
+popupProfileCloseButton.addEventListener('click', () => { closePopup(popupProfile); });
+popupProfileForm.addEventListener('submit', function (evt) { evt.preventDefault(); insertProfileData(); closePopup(popupProfile); });
 
-cardAddButton.addEventListener('click', () => { openPopup(popupCard) });
-popupCardCloseButton.addEventListener('click', () => { closePopup(popupCard) });
-popupCardForm.addEventListener('submit', function (evt) { evt.preventDefault(); addNewCard(); closePopup(popupCard) });
+cardAddButton.addEventListener('click', () => { openPopup(popupCard); });
+popupCardCloseButton.addEventListener('click', () => { closePopup(popupCard); });
+popupCardForm.addEventListener('submit', function (evt) { evt.preventDefault(); addNewCard(); closePopup(popupCard); });
+
+elements.addEventListener('click', deleteCard);
+
+elements.addEventListener('click', likeCard);

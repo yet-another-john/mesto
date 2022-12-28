@@ -18,6 +18,7 @@
 @import url(../blocks/profile/__add-button-plus/profile__add-button-plus.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
+@import url(../blocks/element/__delete/element__delete.css);
 @import url(../blocks/element/__mask/element__mask.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__sign-like/element__sign-like.css);
