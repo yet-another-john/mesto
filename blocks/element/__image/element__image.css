@@ -2,3 +2,7 @@
   background-position: center;
   background-size: cover;
 }
+
+.element__image:hover {
+  cursor: pointer;
+}

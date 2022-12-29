@@ -1,0 +1,14 @@
+.popup__image-sign {
+  margin: 0;
+  padding: 0;
+  width: 291px;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+}
