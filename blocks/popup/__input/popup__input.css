@@ -1,8 +1,6 @@
 .popup__input {
-  margin: 46px 0 0 36px;
-  padding: 0;
+  margin: 56px 0 0 36px;
   width: 358px;
-  height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   font-family: 'Inter', Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
@@ -12,13 +10,12 @@
   line-height: 17px;
 }
 
-.popup__input:nth-child(3) {
-  margin-top: 30px;
+.popup__input:nth-child(4) {
+  margin-top: 0;
 }
 
 .popup__input:focus {
-  outline: 2px solid #7bc1f7;
-  box-shadow: 0 0 10px #7bc1f7;
+  outline: 1px solid #7bc1f7;
   border-radius: 2px;
 }
 

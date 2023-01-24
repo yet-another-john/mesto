@@ -53,10 +53,12 @@
           <button class="popup__close-button" type="button">
             <img class="popup__close-icon" src="./images/close-icon.svg" alt="Иконка.">
           </button>
-          <form name="popup-profile-form">
+          <form name="popup-profile-form" class="form" novalidate>
             <h2 class="popup__header">Редактировать профиль</h2>
-            <input class="popup__input" type="text" name="input-profile-name">
-            <input class="popup__input" type="text" name="input-profile-status">
+            <input name="input-profile-name" class="popup__input" type="text" minlength="2" maxlength="40" required>
+            <span class="popup__input-error input-profile-name-error"></span>
+            <input name="input-profile-status" class="popup__input" type="text" minlength="2" maxlength="200" required>
+            <span class="popup__input-error input-profile-status-error"></span>
             <button class="popup__submit-button" type="submit">Сохранить</button>
           </form>
         </div>
@@ -66,10 +68,12 @@
           <button class="popup__close-button" type="button">
             <img class="popup__close-icon" src="./images/close-icon.svg" alt="Иконка.">
           </button>
-          <form name="popup-card-form">
+          <form name="popup-card-form" class="form" novalidate>
             <h2 class="popup__header">Новое место</h2>
-            <input class="popup__input" type="text" placeholder="Название" name="input-card-location">
-            <input class="popup__input" type="text" placeholder="Ссылка на картинку" name="input-card-link">
+            <input name="input-card-location" class="popup__input" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup__input-error input-card-location-error"></span>
+            <input name="input-card-link" class="popup__input" type="url" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error input-card-link-error"></span>
             <button class="popup__submit-button" type="submit">Создать</button>
           </form>
         </div>
@@ -86,6 +90,7 @@
     </div>
   </div>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

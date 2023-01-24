@@ -1,5 +1,6 @@
 const elements = document.querySelector('.elements');
 const closeButtons = document.querySelectorAll('.popup__close-button');
+const popupList = document.querySelectorAll('.popup');
 const cardTemplate = document.querySelector('#card').content;
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
@@ -68,10 +69,18 @@ function getProfileData() {
 
 function openPopup(object) {
   object.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape)
 };
 
 function closePopup(object) {
   object.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape)
+};
+
+function closePopupEscape(evt) {
+  if(evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  };
 };
 
 function insertProfileData() {
@@ -130,4 +139,10 @@ popupCardForm.addEventListener('submit', function (evt) {
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
+});
+
+popupList.forEach((popup) => {
+  popup.addEventListener('click', function (evt) {
+    if (!popup.querySelector('.popup__container').contains(evt.target)) { closePopup(popup); }
+  });
 });
