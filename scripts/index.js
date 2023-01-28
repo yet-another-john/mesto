@@ -1,5 +1,6 @@
 const elements = document.querySelector('.elements');
 const closeButtons = document.querySelectorAll('.popup__close-button');
+const escapeButton = 'Escape';
 const popupList = document.querySelectorAll('.popup');
 const cardTemplate = document.querySelector('#card').content;
 const profileName = document.querySelector('.profile__name');
@@ -30,33 +31,6 @@ function createCard(link, name) {
 };
 
 function loadInitialCards() {
-  const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
   initialCards.forEach(item => {
     elements.prepend(createCard(item.link, item.name));
   });
@@ -78,7 +52,7 @@ function closePopup(object) {
 };
 
 function closePopupEscape(evt) {
-  if(evt.key === 'Escape') {
+  if (evt.key === escapeButton) {
     closePopup(document.querySelector('.popup_opened'));
   };
 };
@@ -104,12 +78,7 @@ function showCardImage(event) {
 
 function likeCard(event) {
   const target = event.target.closest('.element__like');
-  if (target.classList.contains('element__like_active')) {
-    target.classList.remove('element__like_active');
-  }
-  else {
-    target.classList.add('element__like_active');
-  }
+  target.classList.toggle('element__like_active');
 };
 
 loadInitialCards();
@@ -123,6 +92,8 @@ popupProfileForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
   insertProfileData();
   closePopup(popupProfile);
+  popupProfileForm.reset();
+  enableValidation(settings);
 });
 
 cardAddButton.addEventListener('click', () => {
@@ -134,6 +105,7 @@ popupCardForm.addEventListener('submit', function (evt) {
   elements.prepend(createCard(popupCardInputLink.value, popupCardInputLocation.value));
   closePopup(popupCard);
   popupCardForm.reset();
+  enableValidation(settings);
 });
 
 closeButtons.forEach((button) => {

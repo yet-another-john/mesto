@@ -1,12 +1,3 @@
-const settings = {
-  formSelector: '.form',
-  submitButtonSelector: '.popup__submit-button',
-  inputSelector: '.popup__input',
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
-
 function showInputError(formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
   inputElement.classList.add(settings.inputErrorClass);
