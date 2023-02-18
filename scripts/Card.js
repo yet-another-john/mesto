@@ -1,9 +1,9 @@
-import { openPopup } from "./index.js";
-
+import {openPopup} from './index.js'
 export class Card {
-  constructor(item, cardTemplateSelector) {
+  constructor(item, cardTemplateSelector, openPopup) {
     this._item = item;
     this._cardTemplateSelector = cardTemplateSelector;
+    this._openPopup = openPopup;
   }
 
   _getTemplate() {
@@ -21,20 +21,21 @@ export class Card {
   };
 
   _showCardImage(event) {
-    const popupImage = document.querySelector('#popup-image');
-    const popupImageLink = popupImage.querySelector('.popup__image');
-    const popupImageSign = popupImage.querySelector('.popup__image-sign');
-    const targetLink = event.target.closest('.element__image');
-    popupImageLink.src = targetLink.src;
-    const targetSign = event.target.closest('.element').querySelector('.element__sign');
-    popupImageLink.alt = `Название картинки: ${targetSign.textContent}`;
-    popupImageSign.textContent = targetSign.textContent;
-    openPopup(popupImage);
+    this._popupImage = document.querySelector('#popup-image');
+    this._popupImageLink = this._popupImage.querySelector('.popup__image');
+    this._popupImageSign = this._popupImage.querySelector('.popup__image-sign');
+    this._targetLink = event.target.closest('.element__image');
+    this._popupImageLink.src = this._targetLink.src;
+    this._targetSign = event.target.closest('.element').querySelector('.element__sign');
+    this._popupImageLink.alt = `Название картинки: ${this._targetSign.textContent}`;
+    this._popupImageSign.textContent = this._targetSign.textContent;
+    openPopup(this._popupImage);
+//  this._openPopup(this._popupImage);
   };
 
   _likeCard(event) {
-    const target = event.target.closest('.element__like');
-    target.classList.toggle('element__like_active');
+    this._target = event.target.closest('.element__like');
+    this._target.classList.toggle('element__like_active');
   };
 
   _setEventListeners() {
