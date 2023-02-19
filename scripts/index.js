@@ -17,6 +17,9 @@ const popupCard = document.querySelector('#popup-card');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
 const popupCardInputLocation = popupCard.querySelector('input[name="input-card-location"]');
 const popupCardInputLink = popupCard.querySelector('input[name="input-card-link"]');
+const popupImage = document.querySelector('#popup-image');
+const popupImageLink = popupImage.querySelector('.popup__image');
+const popupImageSign = popupImage.querySelector('.popup__image-sign');
 
 const settings = {
   cardTemplateSelector: '#card',
@@ -60,7 +63,7 @@ function getProfileData() {
   popupProfileInputStatus.value = profileStatus.textContent;
 };
 
-export function openPopup(object) {
+function openPopup(object) {
   object.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape)
 };
@@ -81,8 +84,15 @@ function insertProfileData() {
   profileStatus.textContent = popupProfileInputStatus.value;
 };
 
+function handleCardClick(name, link) {
+  popupImageLink.src = link;
+  popupImageLink.alt = `Название картинки: ${name}`;
+  popupImageSign.textContent = name;
+  openPopup(popupImage);
+}
+
 function createCard(item) {
-  const card = new Card(item, settings.cardTemplateSelector, openPopup);
+  const card = new Card(item, settings.cardTemplateSelector, handleCardClick);
   const cardElement = card.createCard();
   return cardElement
 }
