@@ -3,7 +3,7 @@ export class Card {
     this._item = item;
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
-  }
+  };
 
   _getTemplate() {
     const cardTemplate = document
@@ -12,7 +12,7 @@ export class Card {
       .querySelector('.element')
       .cloneNode(true);
     return cardTemplate;
-  }
+  };
 
   _deleteCard(event) {
     const target = event.target.closest('.element__delete');
@@ -30,7 +30,7 @@ export class Card {
     this._elementImage.addEventListener('click', () => {
       this._handleCardClick(this._item.name, this._item.link);
     });
-  }
+  };
 
   createCard() {
     this._cardElement = this._getTemplate();

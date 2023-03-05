@@ -2,7 +2,7 @@ export class FormValidator {
   constructor(formElement, settings) {
     this._formElement = formElement;
     this._settings = settings;
-  }
+  };
 
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.name}-error`);
@@ -29,7 +29,7 @@ export class FormValidator {
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-    })
+    });
   };
 
   _toggleButtonState() {
@@ -59,7 +59,7 @@ export class FormValidator {
     this._inputList.forEach((inputElement) => {
     this._hideInputError(inputElement);
     });
-  }
+  };
 
   enableValidation() {
     this._setEventListeners();
