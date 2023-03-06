@@ -12,7 +12,7 @@ export class UserInfo {
   };
 
   setUserInfo(userName, userStatus) {
-    this._userName = userName;
-    this._userStatus = userStatus;
+    this._userName.textContent = userName;
+    this._userStatus.textContent = userStatus;
   };
 }

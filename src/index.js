@@ -1,13 +1,12 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { Section } from './Section.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+import './pages/index.css';
+import { Card } from './scripts/Card.js';
+import { FormValidator } from './scripts/FormValidator.js';
+import { Section } from './scripts/Section.js';
+import { PopupWithImage } from './scripts/PopupWithImage.js';
+import { PopupWithForm } from './scripts/PopupWithForm.js';
+import { UserInfo } from './scripts/UserInfo.js';
 
 const elements = document.querySelector('.elements');
-const profileName = document.querySelector('.profile__name');
-const profileStatus = document.querySelector('.profile__status');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('#popup-profile');
 const popupProfileForm = document.querySelector('form[name="popup-profile-form"]');
@@ -82,8 +81,7 @@ cardsListSection.renderItems();
 
 const popupWithProfileForm = new PopupWithForm(settings.popupProfile, {
   handleSubmitForm: () => {
-    profileName.textContent = popupProfileInputName.value;
-    profileStatus.textContent = popupProfileInputStatus.value;
+    userInfo.setUserInfo(popupProfileInputName.value, popupProfileInputStatus.value);
     popupWithProfileForm.close();
   }
 });
@@ -112,14 +110,15 @@ popupCardFormValidator.enableValidation();
 
 const userInfo = new UserInfo(
   {
-    userNameSelector: profileName,
-    userStatusSelector: profileStatus
-  })
+    userNameSelector: '.profile__name',
+    userStatusSelector: '.profile__status'
+  });
 
 profileEditButton.addEventListener('click', () => {
   popupWithProfileForm.open();
-  popupProfileInputName.value = profileName.textContent;
-  popupProfileInputStatus.value = profileStatus.textContent;
+  const currentUserInfo = userInfo.getUserInfo();
+  popupProfileInputName.value = currentUserInfo.userName;
+  popupProfileInputStatus.value = currentUserInfo.userStatus;
   popupProfileFormValidator.resetValidation();
 });
 
