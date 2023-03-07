@@ -1,10 +1,10 @@
-import './pages/index.css';
-import { Card } from './scripts/Card.js';
-import { FormValidator } from './scripts/FormValidator.js';
-import { Section } from './scripts/Section.js';
-import { PopupWithImage } from './scripts/PopupWithImage.js';
-import { PopupWithForm } from './scripts/PopupWithForm.js';
-import { UserInfo } from './scripts/UserInfo.js';
+import './index.css';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 const elements = document.querySelector('.elements');
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -13,12 +13,13 @@ const popupProfileForm = document.querySelector('form[name="popup-profile-form"]
 const popupProfileInputName = popupProfile.querySelector('input[name="input-profile-name"]');
 const popupProfileInputStatus = popupProfile.querySelector('input[name="input-profile-status"]');
 const cardAddButton = document.querySelector('.profile__add-button');
-const popupCard = document.querySelector('#popup-card');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
-const popupCardInputLocation = popupCard.querySelector('input[name="input-card-location"]');
-const popupCardInputLink = popupCard.querySelector('input[name="input-card-link"]');
 
 const settings = {
+  inputProfileName: 'input-profile-name',
+  inputProfileStatus: 'input-profile-status',
+  inputCardLocation: 'input-card-location',
+  inputCardLink: 'input-card-link',
   profileName: '.profile__name',
   profileStatus: '.profile__status',
   cardTemplateSelector: '#card',
@@ -26,7 +27,10 @@ const settings = {
   popupProfile: '#popup-profile',
   popupCard: '#popup-card',
   popupImage: '#popup-image',
-  formSelector: '.form',
+  formSelector: '.form'
+};
+
+const validatorSettings = {
   submitButtonSelector: '.popup__submit-button',
   inputSelector: '.popup__input',
   inactiveButtonClass: 'popup__submit-button_inactive',
@@ -80,18 +84,18 @@ const cardsListSection = new Section(
 cardsListSection.renderItems();
 
 const popupWithProfileForm = new PopupWithForm(settings.popupProfile, {
-  handleSubmitForm: () => {
-    userInfo.setUserInfo(popupProfileInputName.value, popupProfileInputStatus.value);
+  handleSubmitForm: (data) => {
+    userInfo.setUserInfo(data[settings.inputProfileName], data[settings.inputProfileStatus]);
     popupWithProfileForm.close();
   }
 });
 popupWithProfileForm.setEventListeners();
 
 const popupWithCardForm = new PopupWithForm(settings.popupCard, {
-  handleSubmitForm: () => {
+  handleSubmitForm: (data) => {
     const popupCardInput = {
-      name: popupCardInputLocation.value,
-      link: popupCardInputLink.value
+      name: data[settings.inputCardLocation],
+      link: data[settings.inputCardLink]
     }
     elements.prepend(createCard(popupCardInput));
     popupWithCardForm.close();
@@ -102,16 +106,16 @@ popupWithCardForm.setEventListeners();
 const popupWithImageObject = new PopupWithImage(settings.popupImage);
 popupWithImageObject.setEventListeners();
 
-const popupProfileFormValidator = new FormValidator(popupProfileForm, settings);
+const popupProfileFormValidator = new FormValidator(popupProfileForm, validatorSettings);
 popupProfileFormValidator.enableValidation();
 
-const popupCardFormValidator = new FormValidator(popupCardForm, settings);
+const popupCardFormValidator = new FormValidator(popupCardForm, validatorSettings);
 popupCardFormValidator.enableValidation();
 
 const userInfo = new UserInfo(
   {
-    userNameSelector: '.profile__name',
-    userStatusSelector: '.profile__status'
+    userNameSelector: settings.profileName,
+    userStatusSelector: settings.profileStatus
   });
 
 profileEditButton.addEventListener('click', () => {

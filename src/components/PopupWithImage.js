@@ -8,8 +8,7 @@ export class PopupWithImage extends Popup {
   };
 
   open(name, link) {
-    this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', this._escClose);
+    super.open();
     this._popupImageLink.src = link;
     this._popupImageLink.alt = `Название картинки: ${name}`;
     this._popupImageSign.textContent = name;

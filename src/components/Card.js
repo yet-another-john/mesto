@@ -6,27 +6,26 @@ export class Card {
   };
 
   _getTemplate() {
-    const cardTemplate = document
+    return document
       .querySelector(this._cardTemplateSelector)
       .content
       .querySelector('.element')
       .cloneNode(true);
-    return cardTemplate;
   };
 
-  _deleteCard(event) {
-    const target = event.target.closest('.element__delete');
-    target.closest('.element').remove();
+  _deleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
   };
 
-  _likeCard(event) {
-    this._targetLike = event.target.closest('.element__like');
+  _likeCard() {
     this._targetLike.classList.toggle('element__like_active');
   };
 
   _setEventListeners() {
-    this._cardElement.querySelector('.element__delete').addEventListener('click', this._deleteCard);
-    this._cardElement.querySelector('.element__like').addEventListener('click', this._likeCard);
+    this._targetLike = this._cardElement.querySelector('.element__like');
+    this._targetLike.addEventListener('click', () => { this._likeCard(); });
+    this._cardElement.querySelector('.element__delete').addEventListener('click', () => { this._deleteCard(); });
     this._elementImage.addEventListener('click', () => {
       this._handleCardClick(this._item.name, this._item.link);
     });

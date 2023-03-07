@@ -18,16 +18,14 @@ export class Popup {
   };
 
   _handleEscClose(evt) {
-    const escapeButton = 'Escape';
-    if (evt.key === escapeButton) {
+    if (evt.key === 'Escape') {
       this.close();
     };
   };
 
   setEventListeners() {
-    const container = this._popup.querySelector('.popup__container');
     this._popup.addEventListener('click', (evt) => {
-      if (!container.contains(evt.target)) {
+      if (!this._popupContainer.contains(evt.target)) {
         this._popupClose();
       }
     });
