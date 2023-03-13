@@ -5,7 +5,9 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
+import { Api } from '../components/Api.js';
 
+const avatar = document.querySelector('.profile__avatar');
 const elements = document.querySelector('.elements');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('#popup-profile');
@@ -14,6 +16,7 @@ const popupProfileInputName = popupProfile.querySelector('input[name="input-prof
 const popupProfileInputStatus = popupProfile.querySelector('input[name="input-profile-status"]');
 const cardAddButton = document.querySelector('.profile__add-button');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
+let initialCards = [];
 
 const settings = {
   inputProfileName: 'input-profile-name',
@@ -38,32 +41,32 @@ const validatorSettings = {
   errorClass: 'popup__input-error_active'
 };
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
+  headers: {
+    headers: {
+      authorization: 'b3af3ca5-80fb-4b44-8507-14d2a6cdf62f',
+      'Content-Type': 'application/json'
+    }
   }
-];
+});
+
+api.getUserInfo()
+  .then((result) => {
+    userInfo.setUserInfo(result.name, result.about);
+    avatar.src = result.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+api.getInitialCards()
+  .then((result) => {
+    initialCards = result;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function createCard(item) {
   const card = new Card(item, settings.cardTemplateSelector, handleCardClick);
@@ -75,17 +78,22 @@ function handleCardClick(name, link) {
   popupWithImageObject.open(name, link);
 };
 
-const cardsListSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => { cardsListSection.addItem(createCard(item)) }
-  },
-  settings.cardsContainerSelector);
-cardsListSection.renderItems();
+function createCardsSection() {
+  const cardsListSection = new Section(
+    {
+      items: initialCards,
+      renderer: (item) => { cardsListSection.addItem(createCard(item)) }
+    },
+    settings.cardsContainerSelector);
+  cardsListSection.renderItems();
+};
+
+setTimeout(createCardsSection, 1000);
 
 const popupWithProfileForm = new PopupWithForm(settings.popupProfile, {
   handleSubmitForm: (data) => {
     userInfo.setUserInfo(data[settings.inputProfileName], data[settings.inputProfileStatus]);
+    api.editProfile(data[settings.inputProfileName], data[settings.inputProfileStatus]);
     popupWithProfileForm.close();
   }
 });
