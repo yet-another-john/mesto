@@ -4,6 +4,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
@@ -30,6 +31,7 @@ const settings = {
   popupProfile: '#popup-profile',
   popupCard: '#popup-card',
   popupImage: '#popup-image',
+  popupConfirmation: '#popup-confirmation',
   formSelector: '.form'
 };
 
@@ -69,13 +71,9 @@ api.getInitialCards()
   });
 
 function createCard(item) {
-  const card = new Card(item, settings.cardTemplateSelector, handleCardClick);
+  const card = new Card(item, settings.cardTemplateSelector, handleCardClick, handleDeleteIconClick);
   const cardElement = card.createCard();
   return cardElement
-};
-
-function handleCardClick(name, link) {
-  popupWithImageObject.open(name, link);
 };
 
 function createCardsSection() {
@@ -86,6 +84,14 @@ function createCardsSection() {
     },
     settings.cardsContainerSelector);
   cardsListSection.renderItems();
+};
+
+function handleCardClick(name, link) {
+  popupWithImageObject.open(name, link);
+};
+
+function handleDeleteIconClick() {
+  popupWithConfirmation.open();
 };
 
 setTimeout(createCardsSection, 1000);
@@ -114,6 +120,9 @@ popupWithCardForm.setEventListeners();
 
 const popupWithImageObject = new PopupWithImage(settings.popupImage);
 popupWithImageObject.setEventListeners();
+
+const popupWithConfirmation = new PopupWithConfirmation(settings.popupConfirmation, {});
+popupWithConfirmation.setEventListeners();
 
 const popupProfileFormValidator = new FormValidator(popupProfileForm, validatorSettings);
 popupProfileFormValidator.enableValidation();
