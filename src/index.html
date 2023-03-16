@@ -38,7 +38,10 @@
               <img class="element__image element__mask" src="#" alt="Картинка.">
               <div class="element__sign-like">
                 <h2 class="element__sign"></h2>
-                <button class="element__like" type="button"></button>
+                <div>
+                  <button class="element__like" type="button"></button>
+                  <p class="element__likes-counter"></p>
+                </div>
               </div>
             </div>
           </template>
@@ -87,6 +90,18 @@
           <p class="popup__image-sign"></p>
         </div>
       </div>
+      <div id="popup-delete" class="popup">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button">
+            <img class="popup__close-icon" src="<%=require('./images/close-icon.svg')%>" alt="Иконка.">
+          </button>
+          <form name="popup-delete-form" class="form">
+            <h2 class="popup__header">Вы уверены?</h2>
+            <button id="popup-delete-form-button" class="popup__submit-button" type="submit">Да</button>
+          </form>
+        </div>
+      </div>
+
     </div>
   </div>
 </body>

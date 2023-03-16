@@ -37,6 +37,7 @@ export class Card {
     this._elementImage.src = this._item.link;
     this._elementImage.alt = `Название картинки: ${this._item.name}`;
     this._cardElement.querySelector('.element__sign').textContent = this._item.name;
+    this._cardElement.querySelector('.element__likes-counter').textContent = this._item.likes.length;
     this._setEventListeners();
     return this._cardElement;
   };

@@ -106,6 +106,7 @@ const popupWithCardForm = new PopupWithForm(settings.popupCard, {
       link: data[settings.inputCardLink]
     }
     elements.prepend(createCard(popupCardInput));
+    api.addNewCard(data[settings.inputCardLocation], data[settings.inputCardLink])
     popupWithCardForm.close();
   }
 });

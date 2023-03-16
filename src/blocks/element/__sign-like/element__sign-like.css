@@ -1,5 +1,6 @@
 .element__sign-like {
-  margin: 20px 15px 25px 20px;
+  margin: 20px 15px 15px 20px;
   display: flex;
   justify-content: space-between;
+  padding-right: 5px;
 }
