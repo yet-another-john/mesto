@@ -7,11 +7,16 @@ export class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector('.form');
   };
 
+  setValues(cardId, cardElement) {
+    this._cardId = cardId;
+    this._cardElement = cardElement;
+  };
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleSubmitForm();
+      this._handleSubmitForm(this._cardId, this._cardElement);
     });
   };
 }
