@@ -96,4 +96,20 @@ export class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
+
+  changeAvatar(link) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers.headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
 }

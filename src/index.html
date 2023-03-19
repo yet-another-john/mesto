@@ -101,7 +101,19 @@
           </form>
         </div>
       </div>
-
+      <div id="popup-avatar" class="popup">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button">
+            <img class="popup__close-icon" src="<%=require('./images/close-icon.svg')%>" alt="Иконка.">
+          </button>
+          <form name="popup-avatar-form" class="form" novalidate>
+            <h2 class="popup__header">Обновить аватар</h2>
+            <input name="input-avatar-link" class="popup__input" type="url" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error input-avatar-link-error"></span>
+            <button id="popup-avatar-form-button" class="popup__submit-button" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </body>

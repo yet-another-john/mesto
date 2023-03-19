@@ -17,6 +17,7 @@ const popupProfileInputName = popupProfile.querySelector('input[name="input-prof
 const popupProfileInputStatus = popupProfile.querySelector('input[name="input-profile-status"]');
 const cardAddButton = document.querySelector('.profile__add-button');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
+const popupAvatarForm = document.querySelector('form[name="popup-avatar-form"]');
 let initialCards = [];
 
 const settings = {
@@ -24,6 +25,7 @@ const settings = {
   inputProfileStatus: 'input-profile-status',
   inputCardLocation: 'input-card-location',
   inputCardLink: 'input-card-link',
+  inputAvatarLink: 'input-avatar-link',
   profileName: '.profile__name',
   profileStatus: '.profile__status',
   cardTemplateSelector: '#card',
@@ -32,6 +34,7 @@ const settings = {
   popupCard: '#popup-card',
   popupImage: '#popup-image',
   popupConfirmation: '#popup-confirmation',
+  popupAvatar: '#popup-avatar',
   formSelector: '.form'
 };
 
@@ -55,7 +58,7 @@ const api = new Api({
 
 api.getUserInfo()
   .then((result) => {
-    userInfo.setUserInfo(result.name, result.about);
+    userInfo.setUserInfo(result.name, result.about, result._id);
     avatar.src = result.avatar;
   })
   .catch((err) => {
@@ -71,7 +74,8 @@ api.getInitialCards()
   });
 
 function createCard(item) {
-  const card = new Card(item, settings.cardTemplateSelector, handleCardClick, handleDeleteIconClick, handleLikeIconClick);
+  let userId = userInfo.getUserId();
+  const card = new Card(item, settings.cardTemplateSelector, userId, handleCardClick, handleDeleteIconClick, handleAddLike, handleDeleteLike);
   const cardElement = card.createCard();
   return cardElement
 };
@@ -95,31 +99,46 @@ function handleDeleteIconClick(cardId, cardElement) {
   popupWithConfirmation.open();
 };
 
-function handleLikeIconClick(cardId) {
+function handleAddLike(cardId, cardElement) {
   api.setLike(cardId)
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((result) => {
+      cardElement.updateLikes(result.likes);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
+function handleDeleteLike(cardId, cardElement) {
   api.removeLike(cardId)
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    .then((result) => {
+      cardElement.updateLikes(result.likes);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 setTimeout(createCardsSection, 1000);
+
+const popupWithAvatarForm = new PopupWithForm(settings.popupAvatar, {
+  handleSubmitForm: (data) => {
+    api.changeAvatar(data[settings.inputAvatarLink])
+      .then((result) => {
+        avatar.src = result.avatar;
+      }).catch((err) => {
+        console.log(err);
+      });
+    popupWithAvatarForm.close();
+  }
+});
+popupWithAvatarForm.setEventListeners();
 
 const popupWithProfileForm = new PopupWithForm(settings.popupProfile, {
   handleSubmitForm: (data) => {
     api.editProfile(data[settings.inputProfileName], data[settings.inputProfileStatus])
       .then((result) => {
-        setTimeout(userInfo.setUserInfo(result.name, result.about), 1000);
+        userInfo.setUserInfo(result.name, result.about);
       }).catch((err) => {
         console.log(err);
       });
@@ -147,7 +166,7 @@ popupWithImageObject.setEventListeners();
 const popupWithConfirmation = new PopupWithConfirmation(settings.popupConfirmation, {
   handleSubmitForm: (cardId, cardElement) => {
     api.deleteCard(cardId)
-      .then((result) => {
+      .then(() => {
         cardElement.remove();
       }).catch((err) => {
         console.log(err);
@@ -156,6 +175,9 @@ const popupWithConfirmation = new PopupWithConfirmation(settings.popupConfirmati
   }
 });
 popupWithConfirmation.setEventListeners();
+
+const popupAvatarFormValidator = new FormValidator(popupAvatarForm, validatorSettings);
+popupAvatarFormValidator.enableValidation();
 
 const popupProfileFormValidator = new FormValidator(popupProfileForm, validatorSettings);
 popupProfileFormValidator.enableValidation();

@@ -11,8 +11,13 @@ export class UserInfo {
     }
   };
 
-  setUserInfo(userName, userStatus) {
+  getUserId() {
+    return this._userId;
+  };
+
+  setUserInfo(userName, userStatus, userId) {
     this._userName.textContent = userName;
     this._userStatus.textContent = userStatus;
+    this._userId = userId;
   };
 }
