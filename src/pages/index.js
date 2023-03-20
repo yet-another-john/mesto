@@ -10,16 +10,21 @@ import { Api } from '../components/Api.js';
 
 const avatar = document.querySelector('.profile__avatar');
 const avatarEditButton = document.querySelector('.profile__edite-icon-avatar');
-const elements = document.querySelector('.elements');
+const popupAvatarForm = document.querySelector('form[name="popup-avatar-form"]');
+let popupAvatarSubmitButton = document.querySelector('#popup-avatar-form-button');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('#popup-profile');
 const popupProfileForm = document.querySelector('form[name="popup-profile-form"]');
 const popupProfileInputName = popupProfile.querySelector('input[name="input-profile-name"]');
 const popupProfileInputStatus = popupProfile.querySelector('input[name="input-profile-status"]');
+let popupProfileSubmitButton = document.querySelector('#popup-profile-form-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
-const popupAvatarForm = document.querySelector('form[name="popup-avatar-form"]');
+let popupCardSubmitButton = document.querySelector('#popup-card-form-button');
+const elements = document.querySelector('.elements');
 let initialCards = [];
+
+//console.log(popupAvatarSubmitButton.textContent)
 
 const settings = {
   inputProfileName: 'input-profile-name',
@@ -124,11 +129,14 @@ setTimeout(createCardsSection, 1000);
 
 const popupWithAvatarForm = new PopupWithForm(settings.popupAvatar, {
   handleSubmitForm: (data) => {
+    popupAvatarSubmitButton.textContent = "Сохранение...";
     api.changeAvatar(data[settings.inputAvatarLink])
       .then((result) => {
         avatar.src = result.avatar;
+        popupAvatarSubmitButton.textContent = 'Сохранить';
       }).catch((err) => {
         console.log(err);
+        popupAvatarSubmitButton.textContent = 'Сохранить';
       });
     popupWithAvatarForm.close();
   }
@@ -137,11 +145,14 @@ popupWithAvatarForm.setEventListeners();
 
 const popupWithProfileForm = new PopupWithForm(settings.popupProfile, {
   handleSubmitForm: (data) => {
+    popupProfileSubmitButton.textContent = "Сохранение...";
     api.editProfile(data[settings.inputProfileName], data[settings.inputProfileStatus])
       .then((result) => {
         userInfo.setUserInfo(result.name, result.about);
+        popupProfileSubmitButton.textContent = 'Сохранить';
       }).catch((err) => {
         console.log(err);
+        popupProfileSubmitButton.textContent = 'Сохранить';
       });
     popupWithProfileForm.close();
   }
@@ -150,11 +161,14 @@ popupWithProfileForm.setEventListeners();
 
 const popupWithCardForm = new PopupWithForm(settings.popupCard, {
   handleSubmitForm: (data) => {
+    popupCardSubmitButton.textContent = "Сохранение...";
     api.addNewCard(data[settings.inputCardLocation], data[settings.inputCardLink])
       .then((result) => {
         setTimeout(elements.prepend(createCard(result)), 1000);
+        popupCardSubmitButton.textContent = 'Сохранить';
       }).catch((err) => {
         console.log(err);
+        popupCardSubmitButton.textContent = 'Сохранить';
       });
     popupWithCardForm.close();
   }
