@@ -1,0 +1,9 @@
+.profile__edite-icon-avatar {
+  background-image: url(../../../images/pencil-avatar.png);
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

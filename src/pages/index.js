@@ -9,6 +9,7 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 const avatar = document.querySelector('.profile__avatar');
+const avatarEditButton = document.querySelector('.profile__edite-icon-avatar');
 const elements = document.querySelector('.elements');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('#popup-profile');
@@ -202,4 +203,9 @@ profileEditButton.addEventListener('click', () => {
 cardAddButton.addEventListener('click', () => {
   popupWithCardForm.open();
   popupCardFormValidator.resetValidation();
+});
+
+avatarEditButton.addEventListener('click', () => {
+  popupWithAvatarForm.open();
+  popupAvatarFormValidator.resetValidation();
 });
