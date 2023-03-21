@@ -25,8 +25,11 @@ export class Card {
     this._targetLike.classList.toggle('element__like_active');
   };
 
-  updateLikes(data) {
+  updateLikes(data, flag) {
     this._likes = data;
+    this._elementLikesCounter.textContent = this._likes.length;
+    this._likeCard();
+    this._isLiked = flag;
   };
 
   _setEventListeners() {
@@ -34,18 +37,8 @@ export class Card {
     this._targetLike.addEventListener('click', () => {
       if (!this._isLiked) {
         this._handleAddLike(this._cardId, this);
-        setTimeout(() => {
-          this._elementLikesCounter.textContent = this._likes.length;
-          this._likeCard();
-          this._isLiked = true;
-        }, 500)
       } else {
         this._handleDeleteLike(this._cardId, this);
-        setTimeout(() => {
-          this._elementLikesCounter.textContent = this._likes.length;
-          this._likeCard();
-          this._isLiked = false;
-        }, 500)
       }
     });
     this._elementDelete.addEventListener('click', () => {
