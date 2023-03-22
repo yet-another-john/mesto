@@ -21,8 +21,12 @@ const popupProfileSubmitButton = document.querySelector('#popup-profile-form-but
 const cardAddButton = document.querySelector('.profile__add-button');
 const popupCardForm = document.querySelector('form[name="popup-card-form"]');
 const popupCardSubmitButton = document.querySelector('#popup-card-form-button');
-const elements = document.querySelector('.elements');
-let initialCards = [];
+
+const cardsListSection = new Section(
+  {
+    renderer: (item) => { cardsListSection.addItem(createCard(item)) }
+  },
+  settings.cardsContainerSelector);
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-61',
@@ -38,7 +42,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData.name, userData.about, userData._id);
     userInfo.setUserAvatar(userData.avatar);
-    initialCards = cards;
+    cardsListSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -49,16 +53,6 @@ function createCard(item) {
   const card = new Card(item, settings.cardTemplateSelector, userId, handleCardClick, handleDeleteIconClick, handleAddLike, handleDeleteLike);
   const cardElement = card.createCard();
   return cardElement
-};
-
-function createCardsSection() {
-  const cardsListSection = new Section(
-    {
-      items: initialCards,
-      renderer: (item) => { cardsListSection.addItem(createCard(item)) }
-    },
-    settings.cardsContainerSelector);
-  cardsListSection.renderItems();
 };
 
 function handleCardClick(name, link) {
@@ -89,8 +83,6 @@ function handleDeleteLike(cardId, cardElement) {
       console.log(err);
     });
 };
-
-setTimeout(createCardsSection, 1000);
 
 const popupWithAvatarForm = new PopupWithForm(settings.popupAvatar, {
   handleSubmitForm: (data) => {
@@ -129,7 +121,7 @@ const popupWithCardForm = new PopupWithForm(settings.popupCard, {
     popupCardSubmitButton.textContent = "Сохранение...";
     api.addNewCard(data[settings.inputCardLocation], data[settings.inputCardLink])
       .then((result) => {
-        setTimeout(elements.prepend(createCard(result)), 1000);
+        cardsListSection.addItem(createCard(result));
         popupWithCardForm.close();
       }).catch((err) => {
         console.log(err);
